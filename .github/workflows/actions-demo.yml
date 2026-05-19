@@ -1,6 +1,8 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
+env:
+  my_env_var_one: ${{ false }}
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -29,3 +31,6 @@ jobs:
     steps:
       - run: echo "This not main branch."
       - run: echo "Deploying to production server on branch $GITHUB_REF"
+      - name: my_env_var_one
+        if: ${{ env.my_env_var_one == 'true' }}
+        run: echo "11111111111"
